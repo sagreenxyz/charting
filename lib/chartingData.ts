@@ -1,0 +1,886 @@
+export interface ChartingExample {
+  id: string;
+  title: string;
+  situation: string;
+  example: string;
+  keyElements: string[];
+  tags: string[];
+}
+
+export interface ChartingCategory {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  examples: ChartingExample[];
+}
+
+export const chartingCategories: ChartingCategory[] = [
+  {
+    id: "vital-signs",
+    name: "Vital Signs & Assessment",
+    description:
+      "Documentation of vital signs, initial assessments, and routine monitoring findings.",
+    icon: "🩺",
+    examples: [
+      {
+        id: "vs-routine",
+        title: "Routine Vital Signs Documentation",
+        situation:
+          "Documenting stable vital signs during routine morning assessment.",
+        example:
+          "0800: Vital signs obtained: T 98.4°F (oral), HR 72 bpm (regular rhythm, strong peripheral pulses), RR 16 breaths/min (unlabored), BP 118/76 mmHg (left arm, supine), SpO₂ 98% on room air. Patient alert, oriented ×4, denies pain, shortness of breath, or dizziness. Lung sounds clear to auscultation bilaterally. Bowel sounds present ×4 quadrants. No edema noted. Patient states feeling well and rested.",
+        keyElements: [
+          "All five vital signs with specifics",
+          "Position and extremity for BP",
+          "O2 delivery method",
+          "Neurological status",
+          "Subjective patient statement",
+          "Associated physical findings",
+        ],
+        tags: ["vitals", "assessment", "routine", "morning"],
+      },
+      {
+        id: "vs-hypertension",
+        title: "Hypertensive Episode",
+        situation:
+          "Patient presents with elevated blood pressure requiring intervention.",
+        example:
+          "1415: Patient reported headache rated 6/10, described as 'pounding' at the back of the head. BP 186/102 mmHg (right arm, seated), repeat BP in 5 minutes 182/98 mmHg (right arm, seated). HR 88 bpm, RR 18 breaths/min, SpO₂ 97% on room air. Patient denies chest pain, visual changes, nausea, or difficulty speaking. Neurological exam intact: pupils equal and reactive to light, no facial droop, grip strength equal bilaterally. MD [Name] notified at 1420. Orders received to administer labetalol 200 mg PO. Medication administered at 1430. Patient instructed to remain in bed and call light within reach. Will reassess BP and symptoms in 30 minutes per MD order.",
+        keyElements: [
+          "Symptom onset and description",
+          "Multiple BP readings with specifics",
+          "Neuro assessment",
+          "Time of physician notification",
+          "Orders received and action taken",
+          "Follow-up plan",
+        ],
+        tags: ["blood pressure", "hypertension", "emergency", "medication"],
+      },
+      {
+        id: "vs-fever",
+        title: "Fever Assessment and Intervention",
+        situation:
+          "Patient develops elevated temperature requiring assessment and treatment.",
+        example:
+          "2200: Patient reported feeling 'hot and chilly.' Temperature 102.8°F (tympanic), HR 108 bpm, RR 20 breaths/min, BP 110/68 mmHg, SpO₂ 96% on room air. Skin warm and flushed, diaphoretic. Patient oriented ×3, reports mild headache, denies rigors, rash, or neck stiffness. Last temperature at 1800 was 99.6°F. Blood cultures ×2 drawn per existing order from bilateral peripheral sites before antibiotic administration. Urine specimen collected for urinalysis and culture. Acetaminophen 650 mg PO administered at 2215 per PRN order. Cool damp cloth applied to forehead. Increased IV fluid rate per MD standing order. Charge nurse [Name] and covering MD [Name] notified of fever spike. Temperature reassessed at 2300: 101.2°F. Patient reports feeling 'a little better.'",
+        keyElements: [
+          "Patient's subjective report",
+          "All vital signs",
+          "Skin assessment",
+          "Baseline comparison",
+          "Interventions in order with times",
+          "Notification of providers",
+          "Reassessment findings",
+        ],
+        tags: ["fever", "temperature", "infection", "intervention"],
+      },
+      {
+        id: "vs-tachycardia",
+        title: "Tachycardia Assessment",
+        situation: "Sudden onset of elevated heart rate during monitoring.",
+        example:
+          "1050: Telemetry alarm triggered. Patient observed on monitor with sinus tachycardia at rate of 128 bpm. Bedside assessment performed: patient awake, alert, anxious-appearing. Reports palpitations and mild shortness of breath onset approximately 10 minutes ago. Denies chest pain, diaphoresis, or near-syncope. BP 98/60 mmHg, RR 22 breaths/min, SpO₂ 95% on 2L nasal cannula (down from 98% at 0800 assessment). Oxygen increased to 4L nasal cannula. 12-lead ECG obtained and transmitted to cardiology. IV access patent, NS bolus 500 mL infusing per protocol. MD [Name] notified at 1055, arrived to bedside at 1108. Patient remained in bed with head of bed elevated 30°. Side rails up ×3, call light within reach. Continuous cardiac and SpO₂ monitoring ongoing.",
+        keyElements: [
+          "Alarm trigger and initial finding",
+          "Patient appearance and symptoms",
+          "Vital sign comparison to baseline",
+          "Interventions taken",
+          "Provider notification time",
+          "Safety measures",
+          "Monitoring plan",
+        ],
+        tags: ["tachycardia", "cardiac", "telemetry", "emergency"],
+      },
+    ],
+  },
+  {
+    id: "pain-management",
+    name: "Pain Management",
+    description:
+      "Documentation of pain assessments, interventions, and reassessments using standardized scales.",
+    icon: "💊",
+    examples: [
+      {
+        id: "pain-initial",
+        title: "Initial Pain Assessment",
+        situation:
+          "Comprehensive pain assessment using the PQRST framework on admission or new pain complaint.",
+        example:
+          "1130: Patient reports new onset pain. Pain assessment completed using PQRST method: Provocation — pain worsens with deep breathing and movement, improves slightly with splinting incision site. Quality — described as sharp, stabbing. Region/Radiation — located at right upper quadrant, radiates to right shoulder. Severity — rated 7/10 on numeric pain scale (0–10). Timing — onset 45 minutes ago, constant with intermittent spikes. Patient alert, oriented ×4. Facial grimacing and guarding of abdomen noted. Vital signs: BP 140/88 mmHg, HR 94 bpm, RR 20 breaths/min. Morphine 2 mg IV administered at 1135 per order. Patient educated on use of pain scale and encouraged to report changes in pain. Repositioned to position of comfort; head of bed elevated 30°.",
+        keyElements: [
+          "PQRST framework",
+          "Numeric pain scale",
+          "Behavioral indicators",
+          "Vital signs",
+          "Intervention with time",
+          "Patient education",
+          "Non-pharmacological measures",
+        ],
+        tags: ["pain", "assessment", "PQRST", "abdominal pain"],
+      },
+      {
+        id: "pain-reassessment",
+        title: "Pain Reassessment After Intervention",
+        situation:
+          "Documenting effectiveness of pain medication 30–60 minutes after administration.",
+        example:
+          "1205: Pain reassessment 30 minutes following morphine 2 mg IV administration. Patient reports pain decreased from 7/10 to 3/10. Describes pain as 'still there but much more manageable.' No longer grimacing; appears more relaxed. Vital signs: BP 122/78 mmHg, HR 80 bpm, RR 16 breaths/min, SpO₂ 98% on room air. Respiratory status unchanged from baseline; no signs of opioid-related respiratory depression. Patient denies nausea, pruritus, or dizziness. Able to take a deeper breath without severe pain. Pain management plan discussed with patient; encouraged to request analgesia before pain becomes severe. Will continue to monitor.",
+        keyElements: [
+          "Time elapsed since intervention",
+          "Before and after pain scores",
+          "Patient's subjective response",
+          "Behavioral indicators",
+          "Safety monitoring (respiratory)",
+          "Side effect assessment",
+          "Patient education",
+        ],
+        tags: ["pain", "reassessment", "morphine", "opioid safety"],
+      },
+      {
+        id: "pain-chronic",
+        title: "Chronic Pain Management",
+        situation:
+          "Documenting assessment and management of a patient with chronic pain.",
+        example:
+          "0900: Patient with known chronic lower back pain (lumbar degenerative disc disease) reports current pain 5/10 on numeric scale, consistent with usual chronic pain level per patient report. Patient states pain is 'about the same as usual.' Using pain coping strategies as instructed: TENS unit applied to lower back ×20 minutes, warm compress applied, ambulated with walker for 15 minutes in hallway. Oxycodone 5 mg PO scheduled dose administered at 0900. Patient educated on non-pharmacological strategies. Pain goal per patient: 'to keep pain below 6 so I can do my PT.' Will reassess after physical therapy session.",
+        keyElements: [
+          "Chronic condition context",
+          "Pain score vs. patient's baseline",
+          "Non-pharmacological interventions",
+          "Scheduled medication administration",
+          "Patient's personal pain goal",
+          "Reassessment plan",
+        ],
+        tags: ["chronic pain", "back pain", "non-pharmacological", "opioid"],
+      },
+    ],
+  },
+  {
+    id: "medication-administration",
+    name: "Medication Administration",
+    description:
+      "Documentation of medication administration, patient education, and adverse reactions.",
+    icon: "💉",
+    examples: [
+      {
+        id: "med-routine-iv",
+        title: "IV Antibiotic Administration",
+        situation:
+          "Routine intravenous antibiotic administration with patient monitoring.",
+        example:
+          "1400: Vancomycin 1.25 g IV administered in 250 mL NS over 90 minutes via right forearm peripheral IV (20-gauge catheter, insertion date 3/18, site without redness, swelling, or tenderness). Two patient identifiers verified (name and date of birth). Allergy band checked — NKDA confirmed. Medication label verified against MAR: correct medication, dose, route, time, and patient. Pre-infusion vital signs: BP 124/78 mmHg, HR 76 bpm. Patient educated on signs of infusion reaction including flushing, rash, or difficulty breathing, and instructed to notify nurse immediately. Infusion started at 1405. Patient monitored at 15-minute intervals during infusion. No adverse reactions noted. Post-infusion vital signs at 1540: BP 120/76 mmHg, HR 74 bpm. Vancomycin trough level to be drawn at 1730 per pharmacist recommendation.",
+        keyElements: [
+          "Patient identifiers and allergy check",
+          "5 Rights of medication administration",
+          "IV site assessment",
+          "Pre/post vital signs",
+          "Patient education on side effects",
+          "Monitoring frequency",
+          "Lab draw scheduled",
+        ],
+        tags: ["IV", "antibiotic", "vancomycin", "infusion", "safety"],
+      },
+      {
+        id: "med-insulin",
+        title: "Insulin Administration",
+        situation:
+          "Subcutaneous insulin administration following blood glucose check.",
+        example:
+          "0755: Fingerstick blood glucose 218 mg/dL per glucometer (calibrated, QC within range). Patient identifiers confirmed ×2. Per sliding scale insulin order and carbohydrate intake for breakfast (45 g carbohydrates consumed): Regular insulin 4 units subcutaneous administered to right upper outer arm at 0800. Two-nurse verification completed per facility policy with RN [Name]. Injection site free of lipohypertrophy, bruising, or active infection. Patient educated on hypoglycemia symptoms: shakiness, sweating, confusion, headache. Patient to call for assistance before ambulating. Next scheduled fingerstick glucose at 1100.",
+        keyElements: [
+          "Glucose reading with meter information",
+          "Dose calculation rationale",
+          "Two-nurse verification",
+          "Injection site assessment",
+          "Patient education on hypoglycemia",
+          "Next monitoring time",
+        ],
+        tags: ["insulin", "diabetes", "glucose", "subcutaneous", "safety"],
+      },
+      {
+        id: "med-adverse-reaction",
+        title: "Adverse Medication Reaction",
+        situation:
+          "Patient develops an adverse reaction during medication administration.",
+        example:
+          "1510: Approximately 10 minutes into IV ampicillin-sulbactam infusion, patient reported sudden onset of generalized urticaria with pruritus and throat tightness. Infusion immediately stopped at 1512. Assessment: diffuse urticarial rash noted across chest, abdomen, and bilateral upper arms; no angioedema visualized; SpO₂ 97% on room air (baseline 99%); BP 96/58 mmHg (baseline 124/80 mmHg); HR 110 bpm; patient anxious and distressed, throat tightness reported (rates 4/10). Rapid Response Team activated at 1513. Epinephrine 0.3 mg IM (0.3 mL of 1:1000 solution) administered to left outer thigh at 1514 per standing orders. Oxygen applied at 6L via face mask. MD [Name] arrived 1516. Diphenhydramine 50 mg IV and methylprednisolone 125 mg IV administered per orders. IV fluid bolus 1L NS initiated. Allergy to penicillin-class antibiotics documented in EMR and allergy band applied. Family notified at 1530. Patient monitored continuously; symptoms improving at 1545.",
+        keyElements: [
+          "Exact time of reaction onset",
+          "Infusion stopped immediately",
+          "Full symptom description",
+          "Baseline comparison",
+          "RRT activation time",
+          "Interventions in chronological order",
+          "Allergy documentation",
+          "Family notification",
+        ],
+        tags: [
+          "adverse reaction",
+          "anaphylaxis",
+          "allergy",
+          "emergency",
+          "rapid response",
+        ],
+      },
+    ],
+  },
+  {
+    id: "wound-care",
+    name: "Wound Care & Skin Assessment",
+    description:
+      "Documentation of wound assessments, dressing changes, and skin integrity findings.",
+    icon: "🩹",
+    examples: [
+      {
+        id: "wound-surgical",
+        title: "Surgical Wound Assessment",
+        situation:
+          "Post-operative wound assessment and dressing change documentation.",
+        example:
+          "1030: Surgical wound assessment and dressing change performed. Abdominal midline incision assessed: wound 12 cm in length, closed with staples (×14 staples intact and evenly spaced), well-approximated edges without dehiscence. Surrounding skin without erythema, warmth, or edema. No drainage noted on previous dressing. Wound bed pink and well-perfused. No signs of infection (no purulent drainage, no foul odor, no excessive erythema). Old dressing removed and discarded. Wound site cleansed with normal saline using sterile technique. Clean dry dressing applied. Patient tolerated procedure without distress; pain rated 3/10 during procedure, returned to 1/10 at rest following procedure. Patient instructed on wound care signs and symptoms requiring reporting: increased redness, warmth, swelling, drainage, or fever greater than 101°F. Patient verbalized understanding.",
+        keyElements: [
+          "Wound dimensions and closure type",
+          "Approximation status",
+          "Signs of infection assessment",
+          "Drainage assessment",
+          "Sterile technique notation",
+          "Wound care performed",
+          "Pain during procedure",
+          "Patient education",
+        ],
+        tags: ["wound", "surgical", "post-op", "dressing change", "staples"],
+      },
+      {
+        id: "wound-pressure-injury",
+        title: "Pressure Injury Documentation",
+        situation:
+          "Assessment and documentation of a newly identified pressure injury.",
+        example:
+          "1400: Pressure injury identified on bilateral heel inspection during routine skin assessment. Right heel: Stage 2 pressure injury, 2.5 cm × 1.8 cm, shallow open area with pink/red wound bed, partial thickness skin loss; no slough or eschar noted; no tunneling or undermining; minimal serous drainage; surrounding skin intact without maceration. Left heel: Stage 1 pressure injury, approximately 4 cm × 3 cm area of non-blanchable erythema; skin intact; no open area; warm to touch. Photos obtained per facility protocol. Wound care nurse [Name] notified at 1415 and will assess tomorrow. Pressure injury reported to charge nurse and documented on facility incident tracking system. Bilateral heel protectors applied. Repositioning schedule q2h reinforced with patient and family. Foam overlay placed on mattress. Nutritional assessment ordered; dietitian consult placed. Wound prevention care plan updated. Family educated on pressure injury prevention, staging, and current treatment plan.",
+        keyElements: [
+          "Exact location",
+          "Stage per NPIAP guidelines",
+          "Dimensions",
+          "Wound bed description",
+          "Drainage amount and type",
+          "Surrounding tissue",
+          "Photo documentation",
+          "Wound nurse notification",
+          "Incident reporting",
+          "Prevention interventions",
+          "Family education",
+        ],
+        tags: [
+          "pressure injury",
+          "skin integrity",
+          "wound",
+          "prevention",
+          "staging",
+        ],
+      },
+      {
+        id: "wound-skin-assessment",
+        title: "Comprehensive Skin Assessment",
+        situation:
+          "Head-to-toe skin assessment on admission or shift assessment.",
+        example:
+          "0730: Head-to-toe skin assessment completed. Skin warm, dry, and intact without lesions, rashes, or areas of breakdown across scalp, face, neck, chest, abdomen, back, and all extremities. Mucous membranes moist and pink. No petechiae, ecchymosis, or jaundice noted. Bony prominences assessed: occiput, scapulae, sacrum, coccyx, bilateral trochanters, bilateral heels — all without redness or breakdown. Patient notes a well-healed surgical scar on right lower quadrant (approximately 4 cm, reports appendectomy 2012). One small bruise noted on left forearm (2 cm × 1.5 cm, yellow-green discoloration consistent with resolving bruise per patient report from IV removal 5 days ago). Pressure redistribution mattress in place. Repositioning completed; patient turned to left lateral position, pillows placed between knees and at back for support. Skin care completed: moisture barrier applied to perirectal area. Next repositioning due 0930.",
+        keyElements: [
+          "Systematic head-to-toe approach",
+          "Bony prominence assessment",
+          "Existing wounds or scars noted",
+          "Bruising with plausible explanation",
+          "Preventive measures in place",
+          "Repositioning documented",
+          "Next scheduled repositioning",
+        ],
+        tags: [
+          "skin assessment",
+          "admission",
+          "pressure prevention",
+          "documentation",
+        ],
+      },
+    ],
+  },
+  {
+    id: "falls-safety",
+    name: "Falls & Safety",
+    description:
+      "Documentation of fall risk assessments, fall events, and safety interventions.",
+    icon: "⚠️",
+    examples: [
+      {
+        id: "falls-risk-assessment",
+        title: "Fall Risk Assessment",
+        situation:
+          "Documenting fall risk assessment and prevention interventions.",
+        example:
+          "0800: Morse Fall Scale completed on admission. Score: History of falling — 25 (fell at home 2 months ago); Secondary diagnosis — 15 (diabetes mellitus, hypertension); Ambulatory aid — 15 (uses cane at home); IV/heparin lock — 20 (peripheral IV in right forearm); Gait/transferring — 10 (weak, slow gait); Mental status — 0 (oriented to own ability). Total Morse Fall Scale score: 85 — HIGH risk for falls. Fall prevention interventions implemented: fall risk armband applied (yellow); bed alarm activated; call light within reach; non-slip footwear provided; bed in lowest position; side rails raised ×3; environment cleared of clutter; nurse call system demonstrated and patient verbalized understanding. Patient and family educated on fall risk, prevention strategies, and importance of calling for assistance prior to ambulation. Patient verbalized understanding and agreed to call for help.",
+        keyElements: [
+          "Validated fall risk tool used",
+          "Individual risk factors scored",
+          "Total score and risk category",
+          "Specific prevention interventions",
+          "Equipment applied",
+          "Patient and family education",
+          "Patient agreement to safety plan",
+        ],
+        tags: ["fall risk", "Morse scale", "safety", "prevention", "assessment"],
+      },
+      {
+        id: "falls-event",
+        title: "Fall Event Documentation",
+        situation: "Documenting a patient fall and immediate response.",
+        example:
+          "1645: Loud noise heard from patient room. Upon entering, found patient on floor in bathroom, supine, stating 'I tried to get up myself.' Immediate assessment: patient awake and alert, oriented ×4; denies head strike; no loss of consciousness per patient report; no visible bleeding; patient reports right hip pain 5/10. Vital signs immediately post-fall: BP 118/74 mmHg, HR 84 bpm, RR 18 breaths/min, SpO₂ 97% on room air. No deformity or crepitus noted on right hip or lower extremity; able to wiggle toes bilaterally; sensation intact bilaterally. Patient assisted back to bed with two-person assist; maintained spinal precautions until assessment completed. MD [Name] notified at 1650. Orders received for right hip X-ray. Neurovascular checks q1h ordered. Bed alarm reset; patient reminded to call for assistance. Incident/occurrence report completed per facility policy. Family notified at 1700. Charge nurse [Name] notified. Fall prevention care plan reviewed and updated: two-person assist for all transfers, commode at bedside, increased rounding frequency. Continued monitoring q1h.",
+        keyElements: [
+          "Discovery circumstances",
+          "Immediate assessment including head injury",
+          "Immediate vital signs",
+          "Neurovascular assessment",
+          "Transfer back to bed with safety",
+          "MD notification time",
+          "Orders received",
+          "Incident report filed",
+          "Family notification",
+          "Updated fall prevention plan",
+        ],
+        tags: ["fall event", "fall", "incident", "safety", "hip injury"],
+      },
+    ],
+  },
+  {
+    id: "respiratory",
+    name: "Respiratory Assessment",
+    description:
+      "Documentation of respiratory assessments, oxygen therapy, and breathing treatments.",
+    icon: "🫁",
+    examples: [
+      {
+        id: "resp-routine",
+        title: "Routine Respiratory Assessment",
+        situation: "Standard respiratory assessment during shift.",
+        example:
+          "1400: Respiratory assessment performed. Respiratory rate 18 breaths/min, regular rhythm, unlabored effort. No accessory muscle use, nasal flaring, or retractions observed. Chest expansion symmetrical bilaterally. Lung sounds: clear and equal to auscultation in all fields — upper anterior, lower anterior, lateral, and posterior fields ×8. No crackles, wheezes, rhonchi, or stridor noted. SpO₂ 98% on room air. Patient denies dyspnea, cough, or chest tightness. Skin and mucous membranes pink; no cyanosis of lips or fingertips. Able to speak in full sentences without dyspnea.",
+        keyElements: [
+          "Respiratory rate and pattern",
+          "Effort and accessory muscle use",
+          "Chest expansion symmetry",
+          "Full lung field auscultation",
+          "SpO2 with O2 delivery method",
+          "Cyanosis assessment",
+          "Functional status (speaking)",
+        ],
+        tags: ["respiratory", "lungs", "auscultation", "assessment", "routine"],
+      },
+      {
+        id: "resp-distress",
+        title: "Respiratory Distress",
+        situation: "Patient develops signs of acute respiratory distress.",
+        example:
+          "0315: Patient's SpO₂ alarm triggered at 86% on 2L nasal cannula. Patient found sitting upright in bed, visibly anxious and dyspneic. RR 28 breaths/min with labored effort; accessory muscles engaged; nasal flaring present. Lung sounds reveal coarse bilateral crackles at bases, diminished in lower lobes bilaterally. SpO₂ 86% → increased oxygen to 6L nasal cannula → SpO₂ 90% → oxygen changed to 100% non-rebreather mask → SpO₂ 94% within 5 minutes. Patient reports 'can't catch my breath,' onset approximately 20 minutes ago. Denies chest pain or fever. BP 158/96 mmHg (baseline 130/80 mmHg), HR 112 bpm, RR 28 breaths/min, T 99.0°F. Bilateral lower extremity pitting edema noted — +2 at ankles bilaterally (increased from baseline trace). Rapid Response Team activated at 0317. MD [Name] notified at 0318. Head of bed elevated 90°. Patient reassured. IV access patent. Labs ordered: ABG, BNP, CBC, BMP. Chest X-ray ordered stat. Furosemide 40 mg IV administered per order at 0335. Strict I&O monitoring initiated. Continuous monitoring maintained.",
+        keyElements: [
+          "Alarm trigger and initial finding",
+          "Full respiratory assessment",
+          "Progressive oxygen escalation with SpO2 responses",
+          "Vital sign changes from baseline",
+          "Associated findings (edema)",
+          "RRT activation",
+          "Interventions in order",
+          "Diagnostic orders",
+          "Positioning",
+        ],
+        tags: [
+          "respiratory distress",
+          "hypoxia",
+          "pulmonary edema",
+          "rapid response",
+          "emergency",
+        ],
+      },
+      {
+        id: "resp-nebulizer",
+        title: "Nebulizer Treatment Documentation",
+        situation:
+          "Administering and documenting a nebulizer breathing treatment.",
+        example:
+          "1000: Patient reports tightness in chest and wheezing onset approximately 30 minutes ago. Pre-treatment assessment: RR 22 breaths/min, SpO₂ 94% on room air, expiratory wheeze audible bilaterally on auscultation. Peak flow obtained: 210 L/min (patient's personal best 400 L/min; 52% of predicted — in yellow zone per patient's action plan). Albuterol 2.5 mg/ipratropium 0.5 mg (DuoNeb) nebulizer treatment administered over 15 minutes via mouthpiece. Patient instructed on proper breathing technique: slow, deep inhalations through mouthpiece with brief breath hold. Patient tolerated treatment without distress. Post-treatment assessment: RR 18 breaths/min, SpO₂ 97% on room air, diminished expiratory wheeze; breath sounds improved bilaterally. Peak flow post-treatment: 310 L/min (78% of personal best — improved to green zone). Patient reports chest tightness improved to 2/10 from 6/10. Patient educated on trigger avoidance and when to use rescue inhaler vs. when to seek emergency care. MD notified of exacerbation and response to treatment.",
+        keyElements: [
+          "Pre-treatment assessment",
+          "Peak flow with personal best comparison",
+          "Zone assessment",
+          "Medication name, dose, route",
+          "Proper technique instruction",
+          "Post-treatment comparison",
+          "Patient education",
+          "MD notification",
+        ],
+        tags: ["nebulizer", "asthma", "COPD", "bronchospasm", "albuterol"],
+      },
+    ],
+  },
+  {
+    id: "cardiac",
+    name: "Cardiac Assessment",
+    description:
+      "Documentation of cardiac assessments, telemetry findings, and cardiac interventions.",
+    icon: "❤️",
+    examples: [
+      {
+        id: "cardiac-routine",
+        title: "Routine Cardiac Assessment",
+        situation: "Standard cardiac assessment during shift.",
+        example:
+          "0800: Cardiac assessment performed. HR 68 bpm, regular rate and rhythm on telemetry (sinus rhythm, no ectopy noted). Heart sounds S1 and S2 auscultated; no murmurs, rubs, or gallops appreciated. Peripheral pulses: radial and pedal pulses 2+ bilaterally, capillary refill less than 2 seconds bilaterally. No peripheral edema. Skin warm, dry, and well-perfused; no pallor or cyanosis. Patient denies chest pain, palpitations, or dizziness. Orthostatic vital signs checked per order: supine BP 128/76 mmHg HR 68; sitting 126/74 mmHg HR 72; standing 122/70 mmHg HR 78 — no orthostatic hypotension identified (less than 20 mmHg systolic change). Patient ambulated in hallway ×2 laps without chest pain, palpitations, or dyspnea.",
+        keyElements: [
+          "Heart rate and rhythm",
+          "Telemetry reading",
+          "Heart sound assessment",
+          "Peripheral pulse assessment",
+          "Capillary refill",
+          "Edema assessment",
+          "Orthostatic vital signs",
+          "Activity tolerance",
+        ],
+        tags: ["cardiac", "heart", "assessment", "telemetry", "orthostatic"],
+      },
+      {
+        id: "cardiac-chest-pain",
+        title: "Chest Pain Assessment",
+        situation:
+          "Patient reports new onset chest pain requiring urgent assessment.",
+        example:
+          "1320: Patient activated call light reporting chest pain. Bedside assessment immediate. Patient alert, diaphoretic, appears anxious. Reports substernal chest pressure 7/10, described as 'heavy, like someone sitting on my chest.' Onset 10 minutes ago at rest. Radiates to left arm and jaw. No relief with position change. Associated shortness of breath. No nausea or vomiting reported. Denies cough or pleuritic component. BP 150/94 mmHg, HR 102 bpm, RR 22 breaths/min, SpO₂ 94% on room air. 12-lead ECG obtained immediately at 1322; ST elevation noted in leads II, III, aVF — transmitted to attending physician and cardiology. Oxygen 4L nasal cannula applied; SpO₂ improved to 97%. Cardiac monitor with continuous ST monitoring applied. Aspirin 325 mg PO chewed administered per STEMI protocol at 1324. IV access ×2 large-bore (18-gauge bilateral antecubital) established. Code Blue team notified at 1322. MD [Name] and cardiologist [Name] at bedside by 1328. Cardiology proceeding with emergent cardiac catheterization. Family notified at 1330. Patient transferred to cardiac catheterization lab at 1342.",
+        keyElements: [
+          "OPQRST pain assessment",
+          "Associated symptoms",
+          "Vital signs",
+          "ECG obtained with time",
+          "Specific ECG findings",
+          "Interventions with times",
+          "Code/rapid response activation",
+          "Provider notification",
+          "Family notification",
+          "Transfer time",
+        ],
+        tags: ["chest pain", "STEMI", "MI", "emergency", "cardiac cath"],
+      },
+    ],
+  },
+  {
+    id: "neurological",
+    name: "Neurological Assessment",
+    description:
+      "Documentation of neurological exams, level of consciousness, and stroke assessments.",
+    icon: "🧠",
+    examples: [
+      {
+        id: "neuro-routine",
+        title: "Routine Neurological Assessment",
+        situation: "Standard neurological assessment during shift.",
+        example:
+          "1200: Neurological assessment performed. Patient alert and oriented ×4 (person, place, time, and situation). GCS score 15 (E4V5M6). Pupils equal, round, and reactive to light bilaterally (PERRL); 4 mm, brisk reaction. Cranial nerves grossly intact: extraocular movements intact, no facial asymmetry, tongue midline, shoulder shrug equal bilaterally. Motor strength: upper extremities 5/5 bilaterally, lower extremities 5/5 bilaterally. Sensation intact to light touch in all four extremities. Gait steady; ambulates independently. Follows commands appropriately. Speech clear and coherent. No deficits noted from previous assessment.",
+        keyElements: [
+          "Level of consciousness",
+          "Orientation specifics",
+          "Glasgow Coma Scale score",
+          "Pupil assessment",
+          "Cranial nerve screen",
+          "Motor strength bilaterally",
+          "Sensation",
+          "Gait",
+          "Speech",
+          "Comparison to previous",
+        ],
+        tags: [
+          "neuro",
+          "assessment",
+          "GCS",
+          "pupils",
+          "orientation",
+          "routine",
+        ],
+      },
+      {
+        id: "neuro-stroke",
+        title: "Stroke Symptoms — Code Stroke",
+        situation: "Patient exhibits sudden neurological deficits consistent with stroke.",
+        example:
+          "1515: Family member at bedside activated call light reporting patient was 'acting strange and not making sense.' Bedside assessment: Patient not following commands appropriately; unable to state name, location, or date. Facial asymmetry noted — left-sided facial droop with unequal smile. Left arm drift positive — left arm drifts and pronates within 10 seconds of raising both arms. Speech slurred and incoherent (dysarthria). Grip strength: right 5/5, left 0/5. No response to stimuli on left side. Last known well time confirmed with family: 1500 (15 minutes ago). Cincinnati Stroke Scale: facial droop — abnormal; arm drift — abnormal; speech — abnormal. Score: 3/3 — HIGH suspicion for stroke. Code Stroke activated at 1518. Vital signs: BP 188/108 mmHg, HR 88 bpm, RR 18 breaths/min, SpO₂ 96% on room air. Oxygen 4L nasal cannula applied. Blood glucose 134 mg/dL. Stroke team and neurologist [Name] at bedside by 1523. IV access ×2 established. CT head without contrast ordered stat. Blood drawn: CBC, BMP, PT/INR, PTT, type and screen. Patient NPO. Family educated on stroke signs and hospital stroke protocol. CT completed at 1540; results pending.",
+        keyElements: [
+          "Family's report",
+          "Specific neurological deficits",
+          "Last known well time",
+          "Cincinnati Stroke Scale with score",
+          "Code Stroke activation time",
+          "Vital signs",
+          "Blood glucose",
+          "Team notification",
+          "Interventions",
+          "NPO status",
+          "Family education",
+        ],
+        tags: ["stroke", "code stroke", "neurological deficit", "emergency", "Cincinnati"],
+      },
+      {
+        id: "neuro-seizure",
+        title: "Seizure Documentation",
+        situation: "Witnessing and documenting a patient seizure.",
+        example:
+          "0215: Patient observed in tonic-clonic seizure activity. Onset 0215. Patient in bed, upper extremities and lower extremities with rhythmic jerking movements, eyes deviated to the right, jaw clenched. No injury noted at onset. Side rails padded immediately; patient turned to lateral position to maintain airway and prevent aspiration. Timing begun. Suction at bedside. Call for help made; two staff members at bedside. Duration of seizure: 90 seconds. Post-ictal period: patient unresponsive ×3 minutes, then became increasingly drowsy and minimally responsive to voice; no return to baseline at time of this entry. Oxygen applied 4L nasal cannula at end of seizure; SpO₂ 94% → improved to 98%. MD [Name] notified at 0217. Orders received: lorazepam 2 mg IV administered at 0220 (no further seizure activity observed after administration). Vital signs post-seizure: BP 146/88 mmHg, HR 106 bpm, RR 18 breaths/min, T 98.8°F. Blood glucose 102 mg/dL. No incontinence noted. IV access patent. Continuous neuro checks q15 minutes per order. Family notified at 0225.",
+        keyElements: [
+          "Seizure onset time",
+          "Exact description of movements",
+          "Duration",
+          "Safety measures taken",
+          "Post-ictal assessment",
+          "Interventions",
+          "MD notification",
+          "Medication administered",
+          "Post-seizure vital signs",
+          "Blood glucose",
+          "Monitoring frequency",
+        ],
+        tags: ["seizure", "tonic-clonic", "post-ictal", "emergency", "neuro"],
+      },
+    ],
+  },
+  {
+    id: "fluid-nutrition",
+    name: "Fluid & Nutrition",
+    description:
+      "Documentation of intake and output, IV fluid management, and nutritional assessments.",
+    icon: "🥗",
+    examples: [
+      {
+        id: "fluid-intake-output",
+        title: "Intake & Output Documentation",
+        situation: "End-of-shift intake and output documentation.",
+        example:
+          "1900 — 8-hour shift Intake and Output summary (1100–1900):\n\nINTAKE: Oral fluids: 360 mL (water 240 mL, juice 120 mL). IV fluids: NS 0.9% at 100 mL/hr ×8 hours = 800 mL. IV medications: 150 mL (vancomycin 250 mL bag with 100 mL absorbed, other IV piggybacks 50 mL). Oral medications with water: 60 mL. TOTAL INTAKE: 1,370 mL.\n\nOUTPUT: Urine via Foley catheter: 580 mL (amber, clear, no sediment). Wound drain (Jackson-Pratt right flank): 45 mL serosanguineous drainage. Emesis ×1 episode: approximately 100 mL green bilious. TOTAL OUTPUT: 725 mL.\n\n8-HOUR FLUID BALANCE: +645 mL (positive balance). Cumulative 24-hour balance (including prior nursing entry): +1,240 mL. MD [Name] notified of positive fluid balance and decreased urine output (less than 0.5 mL/kg/hr for past 3 hours for 72 kg patient). Orders pending.",
+        keyElements: [
+          "All intake sources itemized",
+          "All output sources itemized",
+          "Urine characteristics",
+          "Drain characteristics",
+          "Shift and cumulative balance",
+          "Urine output per kg/hr calculation",
+          "MD notification of concern",
+        ],
+        tags: ["intake output", "fluid balance", "Foley", "IV fluids", "monitoring"],
+      },
+      {
+        id: "fluid-nutrition-assessment",
+        title: "Nutritional Assessment",
+        situation:
+          "Documenting nutritional assessment findings and interventions.",
+        example:
+          "1030: Nutritional assessment completed. Patient's height 5'6\" (168 cm), weight 142 lbs (64.5 kg) on admission (bed scale); BMI 22.9. Patient reports unintentional weight loss of 15 lbs over past 3 months. Appetite described as 'poor' — eating approximately 25–50% of meals. Malnutrition screening tool (MST) score: 4 — high risk. Patient reports nausea and early satiety limiting intake. Current diet order: regular diet. Meal intake today: breakfast 25% consumed, lunch 50% consumed. Food preferences obtained; patient prefers softer foods and small frequent meals. Nutritionist/dietitian consult placed at 1035. Speech therapy consult ordered for swallowing assessment per MD order (patient reports occasional coughing with thin liquids). Oral nutritional supplement (Ensure) 1 can offered with lunch; patient consumed 75%. Patient and family educated on importance of adequate nutrition for healing. Will continue to monitor and document meal intake percentages.",
+        keyElements: [
+          "Height, weight, BMI",
+          "Weight history and loss amount",
+          "Validated screening tool with score",
+          "Current oral intake",
+          "Food preferences",
+          "Dietitian consult",
+          "Supplementation",
+          "Patient education",
+        ],
+        tags: [
+          "nutrition",
+          "assessment",
+          "malnutrition",
+          "dietitian",
+          "weight loss",
+        ],
+      },
+    ],
+  },
+  {
+    id: "mental-health",
+    name: "Mental Health",
+    description:
+      "Documentation of mental health assessments, safety screenings, and psychiatric interventions.",
+    icon: "🧩",
+    examples: [
+      {
+        id: "mh-safety-screening",
+        title: "Safety Screening & Suicide Risk Assessment",
+        situation:
+          "Conducting and documenting a patient safety screening for suicidal ideation.",
+        example:
+          "1400: Safety screening completed using Columbia Suicide Severity Rating Scale (C-SSRS) per protocol. Patient admitted for medical detoxification from alcohol. Screen results: Ideation — patient endorsed passive death wish ('I wouldn't mind not waking up') and active ideation without plan. Patient denied specific plan, intent, or access to means. No prior attempts reported. Behavior — no preparatory behaviors noted. C-SSRS score indicates moderate risk. Patient denies homicidal ideation. Patient calm and cooperative, maintains appropriate eye contact, speech non-pressured. No auditory or visual hallucinations reported by patient. Oriented ×4. Psychiatry consulted at 1405 by MD [Name]; will evaluate. Immediate safety interventions implemented: room cleared of sharps and potential ligature risks per facility policy; belongings secured per protocol; patient on 1:1 direct observation per order; patient verbalized understanding of safety measures. Family notified of psychiatric consult with patient consent. Supportive therapeutic communication provided; patient encouraged to verbalize feelings and to notify staff of any changes.",
+        keyElements: [
+          "Validated screening tool (C-SSRS)",
+          "Specific ideation details",
+          "Plan and intent inquiry",
+          "Prior attempts history",
+          "Risk level determination",
+          "Safety interventions implemented",
+          "Psychiatric consult",
+          "Observation level",
+          "Therapeutic communication",
+        ],
+        tags: [
+          "mental health",
+          "suicide",
+          "C-SSRS",
+          "safety screening",
+          "psychiatric",
+        ],
+      },
+      {
+        id: "mh-agitation",
+        title: "Acute Agitation Management",
+        situation:
+          "Documenting management of an acutely agitated patient.",
+        example:
+          "2100: Patient observed pacing room, vocalizing loudly ('I need to leave'), attempting to remove IV tubing. Loud voices audible from hallway. Bedside approach made by two staff members. De-escalation techniques initiated: calm, quiet tone used; staff positioned at patient's eye level; non-threatening posture maintained; clear and simple verbal commands provided; patient offered water and acknowledged frustration. CIWA-Ar score obtained: 18 (moderate alcohol withdrawal). Patient at this time unable to re-direct from behavior. MD [Name] notified at 2106. Haldol 5 mg IM administered to right deltoid at 2115 per order. Patient assisted to bed, side rails raised, bed in lowest position, call light within reach. Continuous 1:1 observation in place. Patient became less agitated by 2130; able to participate in brief conversation; agreed to remain in bed. Repeat assessment at 2200: patient resting comfortably; CIWA-Ar score 10 (mild). All interventions documented in behavior flow sheet.",
+        keyElements: [
+          "Observed behaviors with specifics",
+          "De-escalation techniques attempted",
+          "Assessment tool used (CIWA-Ar)",
+          "MD notification",
+          "Medication administered with route",
+          "Safety measures implemented",
+          "Observation level",
+          "Response to intervention",
+          "Reassessment finding",
+        ],
+        tags: [
+          "agitation",
+          "de-escalation",
+          "alcohol withdrawal",
+          "CIWA",
+          "psychiatric",
+        ],
+      },
+    ],
+  },
+  {
+    id: "patient-education",
+    name: "Patient Education",
+    description:
+      "Documentation of patient teaching, learning assessment, and return demonstrations.",
+    icon: "📚",
+    examples: [
+      {
+        id: "ed-diabetes",
+        title: "Diabetes Self-Management Education",
+        situation:
+          "Documenting patient education session on diabetes self-management.",
+        example:
+          "1300: Diabetes self-management education provided per physician order in preparation for discharge tomorrow. Topics covered: (1) Blood glucose monitoring — technique demonstrated using patient's own glucometer; patient return-demonstrated correct technique; verbalized target glucose range (80–180 mg/dL per MD). (2) Insulin administration — subcutaneous injection technique demonstrated using training pen; patient performed return demonstration correctly ×3 with verbal prompting on first attempt, independently on second and third attempts. (3) Signs and symptoms of hypoglycemia and hyperglycemia — patient able to verbalize three signs of each and appropriate actions. (4) Foot care — importance demonstrated; patient verbalized daily foot inspection technique. (5) Diet and carbohydrate counting — basic carbohydrate information reviewed; patient expressed confusion about portion sizes; dietitian follow-up arranged. Barriers to learning assessed: patient is a visual learner; written materials in English (preferred language confirmed) provided; reading level confirmed appropriate for materials given. Patient's daughter present and participated in education. Discharge instructions printed and given. Follow-up diabetes education appointment scheduled with outpatient diabetes educator.",
+        keyElements: [
+          "Physician order for education",
+          "All topics covered listed",
+          "Return demonstrations documented",
+          "Comprehension assessment",
+          "Barriers to learning addressed",
+          "Learning style considered",
+          "Materials provided",
+          "Family involvement",
+          "Follow-up plan",
+        ],
+        tags: [
+          "patient education",
+          "diabetes",
+          "discharge teaching",
+          "self-management",
+          "insulin",
+        ],
+      },
+      {
+        id: "ed-discharge",
+        title: "Comprehensive Discharge Teaching",
+        situation: "Documenting discharge education prior to patient discharge.",
+        example:
+          "1000: Discharge teaching completed prior to anticipated 1200 discharge. Patient and spouse present for entire teaching session. Topics reviewed:\n\n1. Diagnosis: patient verbalized understanding of heart failure, its causes, and relationship to symptoms.\n2. Medications: medication reconciliation reviewed; patient correctly identified all seven medications by name and purpose; instructed on new medications (lisinopril 5 mg — blood pressure, furosemide 40 mg — fluid removal). Patient verbalized potential side effects to monitor and report.\n3. Daily weight monitoring: scale provided by social work; patient verbalized to weigh daily each morning, report weight gain of more than 2 lbs in one day or 5 lbs in one week to cardiologist.\n4. Dietary restrictions: 2-gram sodium diet reviewed; patient and spouse engaged with dietitian (present at session) and verbalized food substitution examples.\n5. Activity: gradual return to activity; patient to walk 5–10 minutes daily, increasing by 5 minutes weekly.\n6. Fluid restriction: 1,500 mL/day discussed; patient verbalized understanding.\n7. When to call MD or go to ER: warning signs reviewed; patient verbalized signs requiring emergency care (worsening shortness of breath, chest pain, weight gain >2 lbs/day).\n8. Follow-up appointments: cardiologist appointment 1/14 at 10:00 AM confirmed; primary care 1/17 at 2:00 PM confirmed; prescriptions given. Discharge paperwork signed. Patient denies remaining questions. Transportation confirmed.",
+        keyElements: [
+          "Patient and support person present",
+          "All discharge topics enumerated",
+          "Comprehension verified for each topic",
+          "Teach-back method used",
+          "New medications highlighted",
+          "Warning signs for emergency",
+          "All follow-up appointments confirmed",
+          "Paperwork signed",
+          "Transportation confirmed",
+        ],
+        tags: [
+          "discharge",
+          "patient education",
+          "heart failure",
+          "teach-back",
+          "self-care",
+        ],
+      },
+    ],
+  },
+  {
+    id: "end-of-life",
+    name: "End-of-Life Care",
+    description:
+      "Documentation of comfort care, goals of care discussions, and hospice/palliative measures.",
+    icon: "🕊️",
+    examples: [
+      {
+        id: "eol-goals-of-care",
+        title: "Goals of Care Discussion",
+        situation:
+          "Documenting a goals of care family meeting.",
+        example:
+          "1400: Goals of care family meeting conducted at bedside. Present: patient (when alert, participated intermittently), patient's spouse [Name], adult daughter [Name], son [Name], attending physician Dr. [Name], palliative care nurse practitioner [Name], and bedside RN (this nurse). Meeting lasted approximately 60 minutes.\n\nDiscussion summary: physician explained patient's current prognosis — advanced metastatic pancreatic cancer with multi-organ dysfunction; curative options exhausted. Family asked multiple clarifying questions regarding prognosis and what dying process may look like. Questions answered clearly and compassionately by medical team.\n\nPatient's previously expressed wishes reviewed: patient had verbalized to spouse that 'quality of life matters more than quantity.' Advance directive reviewed — patient designated spouse as healthcare proxy; DNR/DNI preference documented.\n\nGoals of care plan agreed upon: transition to comfort-focused care, discontinue curative-intent interventions. Hospice consult accepted by family; referral placed at 1500. Comfort measures initiated: pain and dyspnea management prioritized; unnecessary labs and vitals discontinued; diet liberalized to preference; visiting hours unrestricted per patient and family request.\n\nFamily expressed grief openly; supported by palliative care NP and chaplain (called at family request, arrived 1500). Family verbalized understanding of plan and expressed gratitude. Plan documented in chart; POLST form updated and signed by physician.",
+        keyElements: [
+          "All attendees listed",
+          "Meeting duration",
+          "Medical information communicated",
+          "Patient's previously expressed wishes",
+          "Advance directive review",
+          "Goals of care plan decided",
+          "Hospice referral",
+          "Comfort measures initiated",
+          "Emotional support provided",
+          "POLST/documentation updated",
+        ],
+        tags: [
+          "end of life",
+          "goals of care",
+          "palliative",
+          "hospice",
+          "family meeting",
+        ],
+      },
+      {
+        id: "eol-comfort-care",
+        title: "Comfort Care Assessment",
+        situation:
+          "Ongoing documentation during comfort/hospice care phase.",
+        example:
+          "0200: Comfort care assessment. Patient unresponsive, breathing pattern irregular — Cheyne-Stokes respirations noted with apneic pauses up to 15 seconds. Jaw relaxed, oral secretions present — repositioned to lateral position; oral suctioning performed gently with bulb syringe; foam swabs used to keep lips and oral mucosa moist. No signs of pain or distress: face relaxed, no grimacing or furrowing of brow, extremities without restlessness or agitation. Comfort scale (PAINAD score): 2 (some labored breathing noted, otherwise comfortable). Morphine 2 mg SQ administered at 0205 per comfort order for respiratory distress prevention. Skin: warm, mottled appearance to bilateral lower extremities and knees — family previously educated on this as normal end-of-life change. Peripheral pulses weak and thready bilaterally. Room environment: lighting dim per family preference; soft music playing per family request; Bible on bedside table per patient's request. Family (spouse and two adult children) at bedside; chaplain present. Family offered support and information. No distress reported by family at this time. Will continue q1h assessments.",
+        keyElements: [
+          "Breathing pattern description",
+          "Secretion management",
+          "Comfort assessment (no pain/distress)",
+          "Validated comfort scale",
+          "Medication administered proactively",
+          "Skin changes documented",
+          "Environment supporting dignity",
+          "Family presence and emotional support",
+          "Assessment frequency",
+        ],
+        tags: [
+          "comfort care",
+          "end of life",
+          "Cheyne-Stokes",
+          "PAINAD",
+          "hospice",
+        ],
+      },
+    ],
+  },
+  {
+    id: "post-operative",
+    name: "Post-Operative Care",
+    description:
+      "Documentation of immediate and ongoing post-operative assessments and recovery monitoring.",
+    icon: "🏥",
+    examples: [
+      {
+        id: "post-op-arrival",
+        title: "Post-Operative Arrival Assessment",
+        situation:
+          "Documenting patient arrival from PACU to surgical unit.",
+        example:
+          "1430: Patient received from PACU following laparoscopic cholecystectomy under general anesthesia. SBAR report received from PACU RN [Name]. Handoff assessment upon arrival:\n\nAirway/Breathing: Patient awake and able to speak; maintained own airway; RR 16 breaths/min, unlabored; SpO₂ 97% on 2L nasal cannula (previously 99% on 6L in PACU; patient tolerating wean); breath sounds clear bilaterally.\n\nCirculation: BP 122/78 mmHg, HR 80 bpm, warm and well-perfused, no bleeding noted.\n\nNeuro/Mental Status: Alert, oriented ×3; drowsy but arousable; reports feeling 'groggy but okay.'\n\nPain: Pain 3/10 at incision sites; received morphine 4 mg IV in PACU (last dose 1345); grimacing minimally with movement; antiemetic administered in PACU — no nausea at this time.\n\nWound: Three laparoscopic port sites: right upper quadrant, epigastric, umbilical — all with small dry dressings, no drainage. Abdominal dressing dry and intact.\n\nIV/Lines: Right forearm 18-gauge PIV patent; flushed without resistance; NS at 75 mL/hr infusing.\n\nUrine Output: Foley catheter in place; 80 mL clear yellow urine since surgery end (approximately 1.5 hours); adequate.\n\nPost-operative orders reviewed, noted, and acknowledged. Call surgeon if: BP less than 90 systolic, SpO₂ less than 92%, urine output less than 30 mL/hr, temperature greater than 101.5°F, signs of bleeding. Bed in lowest position, call light within reach, side rails raised ×3.",
+        keyElements: [
+          "Source of report and procedure performed",
+          "SBAR format",
+          "Airway and breathing",
+          "Circulation",
+          "Neurological/mental status",
+          "Pain and last medication",
+          "Wound assessment",
+          "IV access",
+          "Urine output",
+          "Orders reviewed",
+          "Call parameters noted",
+          "Safety measures",
+        ],
+        tags: [
+          "post-op",
+          "PACU",
+          "surgical",
+          "arrival assessment",
+          "handoff",
+        ],
+      },
+    ],
+  },
+  {
+    id: "labor-delivery",
+    name: "Labor & Delivery",
+    description:
+      "Documentation of labor assessment, fetal monitoring, and delivery events.",
+    icon: "👶",
+    examples: [
+      {
+        id: "ld-admission",
+        title: "Labor Admission Assessment",
+        situation:
+          "Documenting assessment of a patient presenting in active labor.",
+        example:
+          "0330: G2P1 patient, 39 weeks and 3 days gestation, presented to Labor & Delivery with regular uterine contractions and spontaneous rupture of membranes at home. Initial assessment:\n\nContractions: q4–5 minutes, lasting 45–60 seconds, moderate intensity by palpation. Patient rates contraction pain 7/10.\n\nFetal Heart Rate (FHR): External fetal monitor applied. Baseline FHR 140 bpm with moderate variability; accelerations present (2 accelerations of >15 bpm lasting >15 seconds noted in 20-minute strip); no decelerations observed. Reactive NST.\n\nCervical Exam (obtained by CNM [Name] at 0345): 5 cm dilated, 80% effaced, -1 station; vertex presentation confirmed.\n\nRupture of Membranes: Patient reports clear fluid gush at home approximately 1 hour ago; confirmed on assessment — fluid at vaginal vault — positive ferning on microscopy, positive nitrazine, fluid clear without foul odor or meconium staining. GBS status: negative (tested at 36 weeks).\n\nVital Signs: BP 118/72 mmHg, HR 86 bpm, RR 18 breaths/min, T 98.6°F, SpO₂ 98% on room air.\n\nIV access established: 18-gauge left forearm; LR at 125 mL/hr per order. OB panel labs drawn. Epidural anesthesia requested; anesthesiology notified. Patient and support person (husband) educated on labor process and monitoring. Birth plan reviewed.",
+        keyElements: [
+          "OB history (G#P#)",
+          "Gestational age",
+          "Contraction assessment",
+          "FHR tracing description",
+          "Cervical exam (by who)",
+          "ROM confirmation",
+          "GBS status",
+          "Maternal vital signs",
+          "IV access and fluids",
+          "Labs drawn",
+          "Patient preferences/birth plan",
+        ],
+        tags: [
+          "labor",
+          "delivery",
+          "OB",
+          "admission",
+          "fetal monitoring",
+          "cervical exam",
+        ],
+      },
+    ],
+  },
+];
+
+export function getAllExamples(): ChartingExample[] {
+  return chartingCategories.flatMap((cat) => cat.examples);
+}
+
+export function searchExamples(query: string): (ChartingExample & { categoryId: string; categoryName: string })[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+
+  return chartingCategories.flatMap((cat) =>
+    cat.examples
+      .filter(
+        (ex) =>
+          ex.title.toLowerCase().includes(q) ||
+          ex.situation.toLowerCase().includes(q) ||
+          ex.example.toLowerCase().includes(q) ||
+          ex.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+          ex.keyElements.some((ke) => ke.toLowerCase().includes(q))
+      )
+      .map((ex) => ({ ...ex, categoryId: cat.id, categoryName: cat.name }))
+  );
+}
+
+export function getCategoryById(id: string): ChartingCategory | undefined {
+  return chartingCategories.find((cat) => cat.id === id);
+}
