@@ -1,29 +1,18 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { searchExamples } from "@/lib/chartingData";
 import SearchBar from "@/components/SearchBar";
 import ExampleCard from "@/components/ExampleCard";
 
-interface Props {
-  searchParams: Promise<{ q?: string }>;
-}
-
-export function generateMetadata() {
-  return {
-    title: "Search — NurseChart",
-    description: "Search nursing charting examples by situation, keyword, or tag.",
-  };
-}
-
-export default async function SearchPage({ searchParams }: Props) {
-  const { q } = await searchParams;
-  const query = q?.trim() ?? "";
+function SearchResults() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q")?.trim() ?? "";
   const results = query ? searchExamples(query) : [];
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
-      <h1 className="text-2xl font-bold text-slate-900 mb-6">
-        Search Charting Examples
-      </h1>
-
+    <>
       <div className="mb-8">
         <SearchBar initialQuery={query} autoFocus={!query} />
       </div>
@@ -86,6 +75,19 @@ export default async function SearchPage({ searchParams }: Props) {
           </p>
         </div>
       )}
+    </>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-10">
+      <h1 className="text-2xl font-bold text-slate-900 mb-6">
+        Search Charting Examples
+      </h1>
+      <Suspense fallback={<div role="status" aria-live="polite" className="text-slate-500">Loading…</div>}>
+        <SearchResults />
+      </Suspense>
     </div>
   );
 }
