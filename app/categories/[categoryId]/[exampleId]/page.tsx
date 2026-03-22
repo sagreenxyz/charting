@@ -83,9 +83,9 @@ export default async function ExamplePage({ params }: Props) {
           Charting Example
         </h2>
         <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-          <pre className="whitespace-pre-wrap text-sm text-slate-800 font-mono leading-relaxed">
+          <p className="whitespace-pre-wrap text-base text-slate-800 leading-loose">
             {example.example}
-          </pre>
+          </p>
         </div>
       </div>
 
